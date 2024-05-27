@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Image Slider</title>
+    <style>
+      
+        body {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            margin: 0;
+            background-color: rgba(83, 83, 83, 0.705);
+        }
+
+        #imageSlider {
+            width: 400px;
+            height: 400px;
+            object-fit: cover; 
+            border: 2px solid #333;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.3);
+        }
+
+        .slider-controls {
+            display: flex;
+            justify-content: center;
+            margin-top: 20px;
+        }
+
+        .slider-controls button {
+            font-size: 18px;
+            background-color: #f0f0f0;
+            border: 1px solid #ccc;
+            padding: 5px 10px;
+            margin: 0 10px;
+            cursor: pointer;
+        }
+    </style>
+</head>
+<body>
+    <img id="imageSlider" src="images/starter.jpg" alt="Image Slider">
+    <div class="slider-controls">
+        <button onclick="goBackward()"> previous </button>
+        <button onclick="goForward()">Forward </button>
+    </div>
+    <script>
+        const imgArray = [
+            "images/1.jpg",
+            "images/2.jpg",
+            "images/3.jpg",
+            "images/4.jpg",
+            
+        ];
+
+        let index = 0;
+        const imageSlider = document.getElementById("imageSlider");
+
+        function updateImage() {
+            imageSlider.src = imgArray[index];
+        }
+
+        function goForward() {
+            index = (index + 1) % imgArray.length;
+            updateImage();
+        }
+
+        function goBackward() {
+            index = (index - 1 + imgArray.length) % imgArray.length;
+            updateImage();
+        }
+
+        
+        updateImage();
+    </script>
+</body>
+</html>
